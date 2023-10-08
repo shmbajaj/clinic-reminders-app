@@ -1,3 +1,5 @@
+import { AtSignIcon, BellIcon } from '@chakra-ui/icons';
+
 const patients = {
   columns: [
     { header: 'ID', accessor: 'id' },
@@ -121,4 +123,19 @@ const reminders = {
   ],
 };
 
-export default { patients, reminders };
+const routes = {
+  sidebar: [
+    {
+      to: 'patients',
+      title: 'Patients',
+      icon: AtSignIcon,
+    },
+    {
+      to: 'reminders',
+      title: 'Reminders',
+      icon: BellIcon,
+    },
+  ],
+};
+
+export default { patients, reminders, routes };
