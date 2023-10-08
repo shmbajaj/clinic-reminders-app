@@ -85,12 +85,12 @@ const DataTable: React.FC<DataTableProps> = ({
               ))}
               <Td>
                 <HStack spacing={2}>
-                  <IconButton
+                  {/* <IconButton
                     icon={<FaEye />}
                     variant="ghost"
                     colorScheme="teal"
                     aria-label="View"
-                  />
+                  /> */}
                   <IconButton
                     icon={<FaEdit />}
                     variant="ghost"
