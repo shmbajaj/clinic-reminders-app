@@ -7,6 +7,7 @@ import {
   Spacer,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const mobileLogoSize = useBreakpointValue({ base: '150px', md: '200px' });
@@ -16,10 +17,12 @@ export default function Header() {
     <Box as="header" py={4} px={4} bg="gray.100">
       <Flex alignItems="center">
         {/* Right Side - Mobile: Logo and Web App Name */}
-        <HStack spacing={2}>
-          <Box as="img" src="/logo.svg" alt="Logo" maxH={mobileLogoSize} />
-          <Heading fontSize={mobileFontSize}>Clinic Reminders</Heading>
-        </HStack>
+        <Link to="/">
+          <HStack spacing={2}>
+            <Box as="img" src="/logo.svg" alt="Logo" maxH={mobileLogoSize} />
+            <Heading fontSize={mobileFontSize}>Clinic Reminders</Heading>
+          </HStack>
+        </Link>
 
         {/* Center - Logo and Web App Name */}
         <Spacer />
