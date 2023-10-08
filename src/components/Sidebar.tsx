@@ -1,4 +1,3 @@
-import { AtSignIcon, BellIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -7,26 +6,29 @@ import {
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import data from '../data';
 
 export default function Sidebar() {
   const iconSize = useBreakpointValue({ base: '20px', md: '24px', lg: '28px' });
   const textSize = useBreakpointValue({ base: 'sm', md: 'md', lg: 'lg' });
   return (
-    <Box bg="gray.500" color="white" h="100vh" p={4}>
+    <Box bg="gray.400" h="100vh" p={4}>
       <VStack spacing={4}>
-        <Link to="/patients">
-          <Flex alignItems="center" gap={1}>
-            <Icon as={AtSignIcon} fontSize={iconSize} />
-            <Text fontSize={textSize}>Patients</Text>
-          </Flex>
-        </Link>
-        <Link to="/reminders">
-          <Flex alignItems="center" gap={1}>
-            <Icon as={BellIcon} fontSize={iconSize} />
-            <Text fontSize={textSize}>Reminders</Text>
-          </Flex>
-        </Link>
+        {data.routes.sidebar.map((r) => (
+          <NavLink
+            to={r.to}
+            key={r.to}
+            className={({ isActive, isPending }) =>
+              isActive ? 'active' : isPending ? 'pending' : ''
+            }
+          >
+            <Flex alignItems="center" gap={1}>
+              <Icon as={r.icon} fontSize={iconSize} />
+              <Text fontSize={textSize}>{r.title}</Text>
+            </Flex>
+          </NavLink>
+        ))}
       </VStack>
     </Box>
   );
