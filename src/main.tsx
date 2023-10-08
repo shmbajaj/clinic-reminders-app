@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       {
         path: 'patients',
         element: (
-          <VStack spacing={4} p={4}>
+          <VStack spacing={4} p={4} w="100%">
             <DataTable
               columns={data.patients.columns}
               data={data.patients.data}
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: 'reminders',
         element: (
-          <VStack spacing={4} p={4}>
+          <VStack spacing={4} p={4} w="100%">
             <DataTable
               columns={data.reminders.columns}
               data={data.reminders.data}
