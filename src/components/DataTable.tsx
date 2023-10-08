@@ -11,12 +11,9 @@ import {
   HStack,
   Text,
   VStack,
-  Box,
   Icon,
 } from '@chakra-ui/react';
 import {
-  FaPlus,
-  FaEye,
   FaEdit,
   FaTrash,
   FaAngleDoubleLeft,
@@ -38,14 +35,16 @@ interface DataTableProps {
   columns: Column[];
   data: RowData[];
   itemsPerPage: number;
-  insertNewRecordBtnText?: string;
+  onDelete: (id: any) => void;
+  onEdit: (id: any) => void;
 }
 
 const DataTable: React.FC<DataTableProps> = ({
   columns,
   data,
   itemsPerPage,
-  insertNewRecordBtnText = 'Insert New Record',
+  onEdit,
+  onDelete,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -60,14 +59,6 @@ const DataTable: React.FC<DataTableProps> = ({
 
   return (
     <VStack spacing={4} w="100%">
-      <HStack justifyContent="flex-end" w="100%">
-        <Box>
-          <Button leftIcon={<Icon as={FaPlus} />} colorScheme="blue">
-            {insertNewRecordBtnText}
-          </Button>
-        </Box>
-      </HStack>
-
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
@@ -96,12 +87,14 @@ const DataTable: React.FC<DataTableProps> = ({
                     variant="ghost"
                     colorScheme="blue"
                     aria-label="Edit"
+                    onClick={() => onEdit?.(row.id)}
                   />
                   <IconButton
                     icon={<FaTrash />}
                     variant="ghost"
                     colorScheme="red"
                     aria-label="Delete"
+                    onClick={() => onDelete?.(row.id)}
                   />
                 </HStack>
               </Td>
