@@ -6,7 +6,7 @@ const patients = {
     { header: 'Name', accessor: 'name' },
     { header: 'Mobile Number', accessor: 'mnumber' },
     { header: 'Date Of Birth', accessor: 'dob' },
-  ],
+  ], 
 
   data: [
     { id: 1, name: 'John Doe', mnumber: '9519595195', dob: '05/08/1998' },

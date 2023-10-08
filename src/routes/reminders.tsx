@@ -3,10 +3,37 @@ import DataTable from '../components/DataTable';
 import data from '../data';
 import { FaPlus } from 'react-icons/fa';
 import Form from '../components/Form';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function Reminders() {
   const [isFormOpen, setFormOpen] = useState(false);
+  const [remindersData, setRemindersData] = useState(data.reminders.data);
+  const initialValues = useRef<Record<string, any>>({});
+
+  function onDelete(_id: any) {
+    const id = parseInt(_id, 10);
+    const reminder = remindersData.find((p) => p.id === id);
+    if (!reminder) {
+      alert('Something Went Wrong!!');
+      return;
+    }
+    const updatedremindersData = [...remindersData].filter((p) => p.id !== id);
+    if (
+      !window.confirm(
+        `Are you sure you want to delete reminder for ${reminder.patientName}?`
+      )
+    ) {
+      return;
+    }
+    setRemindersData(updatedremindersData);
+  }
+
+  function onEdit(_id: any) {
+    const id = parseInt(_id, 10);
+    const patient = remindersData.find((p) => p.id === id) || {};
+    initialValues.current = patient;
+    setFormOpen(true);
+  }
   return (
     <VStack spacing={4} p={4} w="100%">
       <HStack justifyContent="flex-end" w="100%">
@@ -22,8 +49,10 @@ export default function Reminders() {
       </HStack>
       <DataTable
         columns={data.reminders.columns}
-        data={data.reminders.data}
+        data={remindersData}
         itemsPerPage={5}
+        onDelete={onDelete}
+        onEdit={onEdit}
         // insertNewRecordBtnText="Add Reminder"
       />
       <Form
@@ -53,6 +82,7 @@ export default function Reminders() {
             required: true,
           },
         ]}
+        initialValues={initialValues.current}
       />
     </VStack>
   );

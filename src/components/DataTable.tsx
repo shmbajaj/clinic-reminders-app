@@ -11,12 +11,9 @@ import {
   HStack,
   Text,
   VStack,
-  Box,
   Icon,
 } from '@chakra-ui/react';
 import {
-  FaPlus,
-  FaEye,
   FaEdit,
   FaTrash,
   FaAngleDoubleLeft,
@@ -38,12 +35,16 @@ interface DataTableProps {
   columns: Column[];
   data: RowData[];
   itemsPerPage: number;
+  onDelete: (id: any) => void;
+  onEdit: (id: any) => void;
 }
 
 const DataTable: React.FC<DataTableProps> = ({
   columns,
   data,
   itemsPerPage,
+  onEdit,
+  onDelete,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -86,12 +87,14 @@ const DataTable: React.FC<DataTableProps> = ({
                     variant="ghost"
                     colorScheme="blue"
                     aria-label="Edit"
+                    onClick={() => onEdit?.(row.id)}
                   />
                   <IconButton
                     icon={<FaTrash />}
                     variant="ghost"
                     colorScheme="red"
                     aria-label="Delete"
+                    onClick={() => onDelete?.(row.id)}
                   />
                 </HStack>
               </Td>
