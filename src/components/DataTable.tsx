@@ -38,14 +38,12 @@ interface DataTableProps {
   columns: Column[];
   data: RowData[];
   itemsPerPage: number;
-  insertNewRecordBtnText?: string;
 }
 
 const DataTable: React.FC<DataTableProps> = ({
   columns,
   data,
   itemsPerPage,
-  insertNewRecordBtnText = 'Insert New Record',
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -60,14 +58,6 @@ const DataTable: React.FC<DataTableProps> = ({
 
   return (
     <VStack spacing={4} w="100%">
-      <HStack justifyContent="flex-end" w="100%">
-        <Box>
-          <Button leftIcon={<Icon as={FaPlus} />} colorScheme="blue">
-            {insertNewRecordBtnText}
-          </Button>
-        </Box>
-      </HStack>
-
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
