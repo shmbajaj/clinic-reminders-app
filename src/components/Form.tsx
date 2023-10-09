@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-interface FormElement {
+export interface FormElement {
   label: string;
   name: string;
   type: 'text' | 'number' | 'email' | 'password' | 'date';

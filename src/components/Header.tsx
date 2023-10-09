@@ -27,8 +27,7 @@ export default function Header() {
         {/* Center - Logo and Web App Name */}
         <Spacer />
 
-        <HStack spacing={4}>
-          {/* Left Side - Logout Button */}
+        {/* <HStack spacing={4}>
           <Button
             colorScheme="blue"
             variant="solid"
@@ -37,7 +36,7 @@ export default function Header() {
           >
             Logout
           </Button>
-        </HStack>
+        </HStack> */}
       </Flex>
     </Box>
   );
