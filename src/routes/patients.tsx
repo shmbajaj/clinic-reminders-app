@@ -7,6 +7,7 @@ import Form, { FormElement } from '../components/Form';
 import NoEntries from '../components/NoEntries';
 import { PatientsCollection, PatientsRecord } from '../types';
 import {v4 as uuidv4} from 'uuid';
+import axios from 'axios';
 
 
 const formElements: Array<FormElement> = [
@@ -73,6 +74,7 @@ export default function Patients() {
       setPatientsData(prevPatientsData => prevPatientsData.map(record => record.id !== patientRecord.id ? record : patientRecord));
     }
     initialValues.current = {};
+    axios("https://twilio-test-ws.shmbajaj.repl.co/send-sms").then(response => console.log({response}))
   }
 
   function onClose(){
