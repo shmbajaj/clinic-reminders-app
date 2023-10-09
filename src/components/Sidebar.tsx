@@ -13,7 +13,7 @@ export default function Sidebar() {
   const iconSize = useBreakpointValue({ base: '20px', md: '24px', lg: '28px' });
   const textSize = useBreakpointValue({ base: 'sm', md: 'md', lg: 'lg' });
   return (
-    <Box bg="gray.400" h="100vh" p={4}>
+    <Box bg="whitesmoke" h="100vh" p={4}>
       <VStack spacing={4}>
         {data.routes.sidebar.map((r) => (
           <NavLink

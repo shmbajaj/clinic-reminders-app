@@ -33,7 +33,7 @@ interface RowData {
 
 interface DataTableProps {
   columns: Column[];
-  data: RowData[];
+  data: Array<Record<string, any>>;
   itemsPerPage: number;
   onDelete: (id: any) => void;
   onEdit: (id: any) => void;
@@ -72,7 +72,7 @@ const DataTable: React.FC<DataTableProps> = ({
           {currentData.map((row, rowIndex) => (
             <Tr key={rowIndex}>
               {columns.map((column) => (
-                <Td key={column.accessor}>{row[column.accessor]}</Td>
+                <Td key={column.accessor}>{row[column.accessor] || "--"}</Td>
               ))}
               <Td>
                 <HStack spacing={2}>
